@@ -41,7 +41,7 @@ You may list what feature you created, example :
 [Demo Video Story App](https://youtu.be/yEmZDY9ThUA?si=4VfPajbaU7dMByoA)
 
 ## <a name="apk-link"></a> LINK DEPLOY :
-[LINK WEB DEPLOT](https://big-io.m-ariansyah.my.id/)
+[LINK WEB DEPLOY](https://big-io.m-ariansyah.my.id/)
 <hr>
 
 # Getting Started with Create React App
