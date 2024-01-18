@@ -38,7 +38,7 @@ You may list what feature you created, example :
 * `utils`
 
 ## <a name="apk-link"></a> VIDEO DEMO :
-[Demo Video Story App](https://youtu.be/yEmZDY9ThUA?si=4VfPajbaU7dMByoA)
+[Demo Video Story App](https://youtu.be/Wyh7ZvzwJN0)
 
 ## <a name="apk-link"></a> LINK DEPLOY :
 [LINK WEB DEPLOY](https://big-io.m-ariansyah.my.id/)
