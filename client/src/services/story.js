@@ -1,13 +1,11 @@
 import axios from "axios";
 import jsonToFormData from "../utils/jsonToFormData";
 
-const URL = import.meta.env.VITE_API_URL + "/api";
+const URL = "https://big-io-api.m-ariansyah.my.id/api";
 
 const getAllStory = async ({ key = "", category = "", status = "" }) => {
   try {
-    const res = await axios.get(
-      URL + "/story?category=" + category + "&status=" + status + "&key=" + key
-    );
+    const res = await axios.get(URL + "/story?category=" + category + "&status=" + status + "&key=" + key);
     return res;
   } catch (err) {
     return err;
