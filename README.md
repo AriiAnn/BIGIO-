@@ -22,42 +22,48 @@ You may list what feature you created, example :
 
 ## <a name="libraries"></a> Libraries :
 - ExpressJS
-- Express-Fileupload
+- multer
 - Sequelize
 - Mysql2
 - Cors
 - ReactJS
+- vite
 - Axios
-- Bulma
-- Moment
 
 ## <a name="project-structures"></a> Project Structure :
 * `assets`
 * `components`
 * `pages`
+* `service`
+* `utils`
 
-## <a name="apk-link"></a> Website URL :
-[Demo Video Story App](https://youtu.be/yEmZDY9ThUA?si=4VfPajbaU7dMByoA)
+## <a name="apk-link"></a> VIDEO DEMO :
+[Demo Video Story App](https://youtu.be/Wyh7ZvzwJN0)
 
+## <a name="apk-link"></a> LINK DEPLOY :
+[LINK WEB DEPLOY](https://big-io.m-ariansyah.my.id/)
+
+LINK client: https://big-io.m-ariansyah.my.id/
+LINK server: https://big-io-api.m-ariansyah.my.id/
 <hr>
 
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+this project use react vite
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:5173]([(http://localhost:5173/)]) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `npm run test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
