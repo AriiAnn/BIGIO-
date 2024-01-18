@@ -42,6 +42,9 @@ You may list what feature you created, example :
 
 ## <a name="apk-link"></a> LINK DEPLOY :
 [LINK WEB DEPLOY](https://big-io.m-ariansyah.my.id/)
+
+LINK client: https://big-io.m-ariansyah.my.id/
+LINK server: https://big-io-api.m-ariansyah.my.id/
 <hr>
 
 # Getting Started with Create React App
