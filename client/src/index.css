@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 * {
-  @apply text-gray-800 transition-all;
+  @apply text-blue-800 transition-all;
 }
 
 body {
-  @apply bg-gray-900 flex items-center justify-center min-h-screen;
+  @apply w-full;
 }
 
 /* Headings */
@@ -22,20 +22,20 @@ h2 {
 /* Tables */
 td,
 th {
-  @apply border-2 border-gray-300 p-2 bg-gray-50;
+  @apply border-2 border-blue-300 p-2 bg-blue-50;
 }
 
 /* Components */
 .card {
-  @apply bg-gray-300 p-4 rounded-lg;
+  @apply bg-blue-300 p-5 rounded-lg w-full;
 }
 
 .btn-primary {
-  @apply bg-gray-900 text-gray-50 p-2 rounded-md hover:bg-gray-800 active:bg-gray-950 disabled:bg-gray-200;
+  @apply bg-gray-900 text-blue-50 p-2 rounded-md hover:bg-blue-800 active:bg-blue-950 disabled:bg-blue-200;
 }
 
 .btn-secondary {
-  @apply bg-gray-400 p-2 rounded-md hover:bg-gray-200 active:bg-gray-500;
+  @apply bg-blue-400 p-2 rounded-md hover:bg-blue-200 active:bg-blue-500;
 }
 
 .input-text {
@@ -43,5 +43,5 @@ th {
 }
 
 .tag {
-  @apply rounded-md bg-gray-500 text-gray-50 p-1 h-auto;
+  @apply rounded-md bg-blue-500 text-blue-50 p-1 h-auto;
 }

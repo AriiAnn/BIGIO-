@@ -3,28 +3,16 @@ const fs = require("fs");
 const uuid = require("uuid");
 
 const getAllStory = async (req, res) => {
-  const query =
-    "SELECT * FROM story WHERE (title LIKE ? OR writer LIKE ?) AND category LIKE ? AND status LIKE ?";
+  const query = "SELECT * FROM story WHERE (title LIKE ? OR writer LIKE ?) AND category LIKE ? AND status LIKE ?";
   const { key = "", category = "", status = "" } = req.query;
 
-  mySql.query(
-    query,
-    [
-      "%" + key + "%",
-      "%" + key + "%",
-      "%" + category + "%",
-      "%" + status + "%",
-    ],
-    (err, rows) => {
-      if (err) {
-        return res
-          .status(500)
-          .json({ message: "There's some problem", error: err });
-      }
-
-      res.status(200).json({ success: true, data: rows });
+  mySql.query(query, ["%" + key + "%", "%" + key + "%", "%" + category + "%", "%" + status + "%"], (err, rows) => {
+    if (err) {
+      return res.status(500).json({ message: "There's some problem", error: err });
     }
-  );
+
+    res.status(200).json({ success: true, data: rows });
+  });
 };
 
 const getStoryById = async (req, res) => {
@@ -33,9 +21,7 @@ const getStoryById = async (req, res) => {
 
   mySql.query(query, id, (err, rows, field) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ message: "There's some problem", error: err });
+      return res.status(500).json({ message: "There's some problem", error: err });
     }
 
     res.status(200).json({ success: true, data: rows });
@@ -53,16 +39,13 @@ const addStory = async (req, res) => {
     .slice(0, -1);
 
   const data = { ...req.body, image, id: uuid.v4() };
+  console.log(data);
   mySql.query(query, data, (err, rows, field) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ message: "Failed to insert data!", error: err });
+      return res.status(500).json({ message: "Failed to insert data!", error: err });
     }
 
-    res
-      .status(201)
-      .json({ success: true, message: "Data inserted succesfully!", data });
+    res.status(201).json({ success: true, message: "Data inserted succesfully!", data });
   });
 };
 
@@ -83,9 +66,7 @@ const updateStory = async (req, res) => {
 
   mySql.query(querySearch, id, (err, rows, field) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ message: "There's a problem!", error: err });
+      return res.status(500).json({ message: "There's a problem!", error: err });
     }
 
     if (rows.length) {
@@ -100,19 +81,13 @@ const updateStory = async (req, res) => {
 
       mySql.query(queryUpdate, [data, id], (err, rows, field) => {
         if (err) {
-          return res
-            .status(500)
-            .json({ message: "There's a problem!", error: err });
+          return res.status(500).json({ message: "There's a problem!", error: err });
         }
 
-        res
-          .status(200)
-          .json({ success: true, message: "Update data successfully!" });
+        res.status(200).json({ success: true, message: "Update data successfully!" });
       });
     } else {
-      return res
-        .status(404)
-        .json({ message: "Can't find the required data!", success: false });
+      return res.status(404).json({ message: "Can't find the required data!", success: false });
     }
   });
 };
@@ -131,23 +106,17 @@ const deleteStory = async (req, res) => {
     if (data.length) {
       mySql.query(queryDelete, id, (err, rows, field) => {
         if (err) {
-          return res
-            .status(500)
-            .json({ message: "There's a problem", error: err });
+          return res.status(500).json({ message: "There's a problem", error: err });
         }
 
         let base = req.protocol + "://" + req.get("host") + "/api";
         let url = data[0].image.replace(base, ".");
         fs.unlinkSync(url);
 
-        res
-          .status(200)
-          .json({ success: true, message: "Data deleted succesfully!" });
+        res.status(200).json({ success: true, message: "Data deleted succesfully!" });
       });
     } else {
-      return res
-        .status(404)
-        .json({ message: "Can't find the required data!", success: false });
+      return res.status(404).json({ message: "Can't find the required data!", success: false });
     }
   });
 };

@@ -14,14 +14,10 @@ const addChapter = (req, res) => {
   const query = "INSERT INTO chapter SET ?";
   mySql.query(query, data, (err, rows, field) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ message: "Failed to insert data!", error: err });
+      return res.status(500).json({ message: "Failed to insert data!", error: err });
     }
 
-    res
-      .status(201)
-      .json({ success: true, message: "Data inserted succesfully!", data });
+    res.status(201).json({ success: true, message: "Data inserted succesfully!", data });
   });
 };
 
@@ -31,9 +27,7 @@ const getAllChapter = (req, res) => {
 
   mySql.query(query, id, (err, rows, field) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ message: "There's some problem", error: err });
+      return res.status(500).json({ message: "There's some problem", error: err });
     }
 
     res.status(200).json({ success: true, data: rows });
@@ -46,9 +40,7 @@ const getChapterById = (req, res) => {
 
   mySql.query(query, [id, chapterId], (err, rows, field) => {
     if (err) {
-      return res
-        .status(500)
-        .json({ message: "There's some problem", error: err });
+      return res.status(500).json({ message: "There's some problem", error: err });
     }
 
     res.status(200).json({ success: true, data: rows });
@@ -70,19 +62,13 @@ const updateChapter = (req, res) => {
     if (rows.length) {
       mySql.query(queryUpdate, [data, id, chapterId], (err, rows, field) => {
         if (err) {
-          return res
-            .status(500)
-            .json({ message: "There's a problem", error: err });
+          return res.status(500).json({ message: "There's a problem", error: err });
         }
 
-        res
-          .status(200)
-          .json({ success: true, message: "Data updated succesfully!" });
+        res.status(200).json({ success: true, message: "Data updated succesfully!" });
       });
     } else {
-      return res
-        .status(404)
-        .json({ message: "Can't find the required data!!", success: false });
+      return res.status(404).json({ message: "Can't find the required data!!", success: false });
     }
   });
 };
@@ -100,18 +86,12 @@ const deleteChapter = (req, res) => {
     if (data.length) {
       mySql.query(queryDelete, [id, chapterId], (err, rows, field) => {
         if (err) {
-          return res
-            .status(500)
-            .json({ message: "There's a problem", error: err });
+          return res.status(500).json({ message: "There's a problem", error: err });
         }
-        res
-          .status(200)
-          .json({ success: true, message: "Data deleted succesfully!" });
+        res.status(200).json({ success: true, message: "Data deleted succesfully!" });
       });
     } else {
-      return res
-        .status(404)
-        .json({ message: "Can't find the required data!!", success: false });
+      return res.status(404).json({ message: "Can't find the required data!!", success: false });
     }
   });
 };

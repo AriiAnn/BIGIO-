@@ -83,21 +83,13 @@ function App() {
   };
 
   return (
-    <main className="card w-full">
-      {deleteData.show && (
-        <DeleteModal cancel={toggleDelete} action={deleteData.action} />
-      )}
-      <header className="flex justify-between mb-8 gap-8">
+    <main className="card w-full min-h-screen flex flex-col flex-grow">
+      {deleteData.show && <DeleteModal cancel={toggleDelete} action={deleteData.action} />}
+      <header className="flex justify-between mb-8 gap-8 w-full">
         <h1>List Story</h1>
         {showFilter && <FilterModal toggleFilter={toggleFilter} />}
         <section className="flex gap-2">
-          <input
-            type="text"
-            className="input-text"
-            placeholder="Search by writer's name/title story"
-            value={key}
-            onChange={keyHandler}
-          />
+          <input type="text" className="input-text" placeholder="Search by writer's name/title story" value={key} onChange={keyHandler} />
           <button className="btn-secondary" onClick={toggleFilter}>
             <Icon icon="material-symbols:filter-alt" />
           </button>
@@ -118,43 +110,34 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {story.map((val, idx) => {
-            const tags = val.tag.split(" ");
-            return (
-              <tr key={idx}>
-                <td>{val.title}</td>
-                <td>{val.writer}</td>
-                <td>
-                  {val.category.charAt(0).toUpperCase() + val.category.slice(1)}
-                </td>
-                <td>
-                  {tags.map((tag, idx) => (
-                    <span key={idx} className="tag me-1">
-                      {tag}
-                    </span>
-                  ))}
-                </td>
-                <td>{val.status ? "Publish" : "Draft"}</td>
-                <td>
-                  <button className="text-3xl">
-                    <Icon
-                      icon="material-symbols:more-horiz"
-                      onClick={() => toggleActionMenu(idx)}
-                    />
-                    <ActionMenu
-                      id={idx}
-                      name={["View", "Edit", "Delete"]}
-                      action={[
-                        () => nav(`story/${val.id}`),
-                        () => editHandler(val.id),
-                        () => deleteHandler(val.id),
-                      ]}
-                    />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+          {story
+            .slice()
+            .reverse()
+            .map((val, idx) => {
+              // Reverse the order of the story array
+              const tags = val.tag.split(" ");
+              return (
+                <tr key={idx}>
+                  <td>{val.title}</td>
+                  <td>{val.writer}</td>
+                  <td>{val.category.charAt(0).toUpperCase() + val.category.slice(1)}</td>
+                  <td>
+                    {tags.map((tag, idx) => (
+                      <span key={idx} className="tag me-1">
+                        {tag}
+                      </span>
+                    ))}
+                  </td>
+                  <td>{val.status == "1" ? "Publish" : "Draft"}</td>
+                  <td>
+                    <button className="text-3xl">
+                      <Icon icon="material-symbols:more-horiz" onClick={() => toggleActionMenu(idx)} />
+                      <ActionMenu id={idx} name={["View", "Edit", "Delete"]} action={[() => nav(`story/${val.id}`), () => editHandler(val.id), () => deleteHandler(val.id)]} />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </main>

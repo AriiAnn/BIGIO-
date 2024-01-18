@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { addStory, getStoryById, updateStory } from "../services/story";
@@ -7,11 +8,7 @@ import formateDate from "../utils/formatDate";
 import EditChapter from "./EditChapter";
 import ActionMenu from "../components/actionMenu";
 import toggleActionMenu from "../utils/toggleActionMenu";
-import {
-  addChapterToStory,
-  getAllChapter,
-  deleteChapter as deleteChapterFromStory,
-} from "../services/chapter";
+import { addChapterToStory, getAllChapter, deleteChapter as deleteChapterFromStory } from "../services/chapter";
 import DeleteModal from "../components/deleteModal";
 
 const EditStory = () => {
@@ -67,10 +64,7 @@ const EditStory = () => {
   };
 
   const addChapter = (title, story) => {
-    setChapterData([
-      ...chapterData,
-      { title, story, updated_at: formateDate(Date.now()) },
-    ]);
+    setChapterData([...chapterData, { title, story, updated_at: formateDate(Date.now()) }]);
   };
 
   const editChapter = (title, story, idx) => {
@@ -165,23 +159,9 @@ const EditStory = () => {
 
   return (
     <>
-      {showChapter && (
-        <AddChapter
-          addChapter={addChapter}
-          toggleAddChapter={toggleAddChapter}
-        />
-      )}
-      {showEditChapter && (
-        <EditChapter
-          editChapter={editChapter}
-          toggleEditChapter={toggleEditChapter}
-          idx={editData.idx}
-          data={editData.data}
-        />
-      )}
-      {deleteData.show && (
-        <DeleteModal cancel={toggleDelete} action={deleteData.action} />
-      )}
+      {showChapter && <AddChapter addChapter={addChapter} toggleAddChapter={toggleAddChapter} />}
+      {showEditChapter && <EditChapter editChapter={editChapter} toggleEditChapter={toggleEditChapter} idx={editData.idx} data={editData.data} />}
+      {deleteData.show && <DeleteModal cancel={toggleDelete} action={deleteData.action} />}
       <form className="card flex flex-col gap-2" onSubmit={submitHandler}>
         <h1 className="mb-8">Edit Story</h1>
         <div className="flex gap-2">
@@ -189,59 +169,27 @@ const EditStory = () => {
             <label htmlFor="title" className="block">
               Title
             </label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Title"
-              className="input-text"
-              onChange={storyDataHandler}
-              defaultValue={storyData.title}
-              required
-            />
+            <input type="text" name="title" id="title" placeholder="Title" className="input-text" onChange={storyDataHandler} defaultValue={storyData.title} required />
           </div>
           <div>
             <label htmlFor="Writer Name" className="block">
               Writer Name
             </label>
-            <input
-              type="text"
-              name="writer"
-              id="writer"
-              placeholder="Writer Name"
-              className="input-text"
-              onChange={storyDataHandler}
-              defaultValue={storyData.writer}
-              required
-            />
+            <input type="text" name="writer" id="writer" placeholder="Writer Name" className="input-text" onChange={storyDataHandler} defaultValue={storyData.writer} required />
           </div>
         </div>
         <div>
           <label htmlFor="synopsis" className="block">
             Synopsis
           </label>
-          <textarea
-            name="synopsis"
-            id="synopsis"
-            placeholder="Synopsis"
-            className="input-text w-full"
-            onChange={storyDataHandler}
-            required
-            defaultValue={storyData.synopsis}
-          />
+          <textarea name="synopsis" id="synopsis" placeholder="Synopsis" className="input-text w-full" onChange={storyDataHandler} required defaultValue={storyData.synopsis} />
         </div>
         <div className="flex gap-2">
           <div className="w-full">
             <label htmlFor="category" className="block">
               Category
             </label>
-            <select
-              name="category"
-              id="category"
-              className="w-full p-2 rounded-md"
-              onChange={storyDataHandler}
-              required
-            >
+            <select name="category" id="category" className="w-full p-2 rounded-md" onChange={storyDataHandler} required>
               <option value="financial">Financial</option>
               <option value="technology">Technology</option>
               <option value="health">Health</option>
@@ -255,18 +203,8 @@ const EditStory = () => {
               Tags/Keyword Story
             </label>
             <section className="relative overflow-auto">
-              <input
-                type="text"
-                name="tag"
-                id="tag"
-                className="input-text w-full text-white"
-                onChange={inputTags}
-                defaultValue={storyData.tag}
-              ></input>
-              <div
-                className="absolute flex gap-1 left-1 z-10 top-0 h-full py-1"
-                id="input-tags"
-              ></div>
+              <input type="text" name="tag" id="tag" className="input-text w-full text-white" onChange={inputTags} defaultValue={storyData.tag}></input>
+              <div className="absolute flex gap-1 left-1 z-10 top-0 h-full py-1" id="input-tags"></div>
             </section>
           </div>
         </div>
@@ -275,25 +213,13 @@ const EditStory = () => {
             <label htmlFor="image" className="block">
               Cover Image
             </label>
-            <input
-              type="file"
-              name="image"
-              id="image"
-              className="p-1 bg-gray-50 rounded-md "
-              onChange={storyDataHandler}
-            />
+            <input type="file" name="image" id="image" className="p-1 bg-gray-50 rounded-md " onChange={storyDataHandler} />
           </div>
           <div className="w-full">
             <label htmlFor="status" className="block">
               Status
             </label>
-            <select
-              name="status"
-              id="status"
-              className="w-full p-2 rounded-md"
-              onChange={storyDataHandler}
-              required
-            >
+            <select name="status" id="status" className="w-full p-2 rounded-md" onChange={storyDataHandler} required>
               <option value="1">Publish</option>
               <option value="0">Draft</option>
               <option value="" className="hidden">
@@ -322,19 +248,8 @@ const EditStory = () => {
                 <th>{val.title}</th>
                 <th>{formateDate(val.updated_at)}</th>
                 <th>
-                  <Icon
-                    icon="material-symbols:more-horiz"
-                    onClick={() => toggleActionMenu(idx)}
-                    className="cursor-pointer"
-                  />
-                  <ActionMenu
-                    id={idx}
-                    name={["Delete", "Edit"]}
-                    action={[
-                      () => deleteHandler(idx),
-                      (e) => editHandler(e, idx),
-                    ]}
-                  />
+                  <Icon icon="material-symbols:more-horiz" onClick={() => toggleActionMenu(idx)} className="cursor-pointer" />
+                  <ActionMenu id={idx} name={["Delete", "Edit"]} action={[() => deleteHandler(idx), (e) => editHandler(e, idx)]} />
                 </th>
               </tr>
             ))}
