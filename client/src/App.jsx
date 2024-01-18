@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import { Icon } from "@iconify/react";
 import FilterModal from "./components/FilterModal";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
@@ -114,7 +112,6 @@ function App() {
             .slice()
             .reverse()
             .map((val, idx) => {
-              // Reverse the order of the story array
               const tags = val.tag.split(" ");
               return (
                 <tr key={idx}>

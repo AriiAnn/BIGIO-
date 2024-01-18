@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+/* eslint-disable react/prop-types */
 import { useSearchParams } from "react-router-dom";
 
 const FilterModal = ({ toggleFilter }) => {

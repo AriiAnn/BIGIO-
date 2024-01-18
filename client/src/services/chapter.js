@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://big-io-api.m-ariansyah.my.id/api";
+const URL = "http://localhost:5000/api";
 
 const getAllChapter = async (id) => {
   try {

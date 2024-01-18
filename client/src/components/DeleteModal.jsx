@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const DeleteModal = ({ action, cancel }) => {
   console.log(action, cancel);
   return (

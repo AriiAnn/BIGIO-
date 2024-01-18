@@ -1,7 +1,7 @@
 import axios from "axios";
 import jsonToFormData from "../utils/jsonToFormData";
 
-const URL = "https://big-io-api.m-ariansyah.my.id/api";
+const URL = "http://localhost:5000/api";
 
 const getAllStory = async ({ key = "", category = "", status = "" }) => {
   try {
